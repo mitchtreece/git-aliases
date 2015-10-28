@@ -10,3 +10,4 @@ rmbranch = branch -d
 mkbranch = checkout -b
 b = branch
 ba = branch --all
+nuke = reset --hard HEAD
