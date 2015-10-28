@@ -8,6 +8,6 @@ lg = log --graph --pretty=format:'%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)<%
 co = checkout
 rmbranch = branch -d
 mkbranch = checkout -b
-b = branch
-ba = branch --all
+b = branch -vv
+ba = branch -vv --all
 nuke = reset --hard HEAD
