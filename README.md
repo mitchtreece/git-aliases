@@ -25,6 +25,9 @@ However, if you must add them manually, the config file is located at `~/.gitcon
 
 - rmlf = "!f() { git filter-branch -f --index-filter 'git rm --cached --ignore-unmatch $1' }; f" # remove large file
 - fdiff = "!f() { git diff HEAD^ -- $1; }; f"
+
+_**hopmerge**_ merges a specified (defaults to "dev") branch into the current working branch. This pulls and recursively updates submodules as well. (ex. git hopmerge my-branch)
 - hopmerge = "!f() { local source_branch=$(git rev-parse --abbrev-ref HEAD); git co ${1-dev}; git fetch; git pullall; git co $source_branch; git pullall; git merge ${1-dev}; }; f"
 
-_hopmerge_ merges a specified (defaults to "dev") branch into the current working branch. This pulls and recursively updates submodules as well. (ex. git hopmerge my-branch)
+_[Sweep](https://stackoverflow.com/questions/6127328/how-can-i-delete-all-git-branches-which-have-been-merged)_ cleans up local branches that have already been merged.
+- sweep = !git branch --merged $([[ $1 != \"-f\" ]] \\\n&& git rev-parse master) | egrep -v \"(^\\*|^\\s*(master|dev)$)\" \\\n| xargs git branch -d
